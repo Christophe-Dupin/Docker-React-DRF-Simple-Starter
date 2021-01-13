@@ -19,7 +19,7 @@ RUN apk update \
 RUN pip install --upgrade pip
 ADD ./requirements.txt .
 RUN pip install -r requirements.txt
-
+#Add comment
 # copy entrypoint.sh
 ADD ./entrypoint.sh /usr/src/app/entrypoint.sh
 
