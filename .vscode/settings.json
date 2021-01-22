@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/Users/christophedupin/projects/repos/formationOc/projet#13/socialMediaComposer/env/bin/python3",
+    "python.pythonPath": "/Users/christophedupin/.virtualenvs/commerce-2.0-mybizz-ventes-local/bin/python",
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
     "python.linting.enabled": true

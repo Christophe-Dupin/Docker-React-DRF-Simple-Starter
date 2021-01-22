@@ -23,16 +23,5 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=postgres
 
-  node:
-    build:
-      context: ./frontend
-      dockerfile: docker/node/Dockerfile
-    container_name: nodeJs
-    volumes:
-      - ./frontend/:/usr/src/app/
-    ports:
-      - "3000:3000"
-    depends_on:
-      - django
 volumes:
   postgres_data:
