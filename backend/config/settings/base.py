@@ -40,7 +40,10 @@ DJANGO_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    "social_django",
+    "crispy_forms",
+]
 LOCAL_APPS = ["app.posts.apps.PostsConfig", "app.users.apps.UsersConfig"]
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -76,16 +79,23 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+AUTHENTICATION_BACKENDS = [
+    "social_core.backends.linkedin.LinkedinOAuth2",
+    "social_core.backends.instagram.InstagramOAuth2",
+    "social_core.backends.facebook.FacebookOAuth2",
+    "django.contrib.auth.backends.ModelBackend",
+]
 WSGI_APPLICATION = "config.wsgi.application"
 # STATIC
 # ------------------------------------------------------------------------------
-STATIC_URL = "/staticfiles/"
+STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(ROOT_DIR, "staticfiles")
+STATICFILES_DIRS = (os.path.join(ROOT_DIR, "static"),)
 
 # MEDIA
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-root
-MEDIA_ROOT = str(APPS_DIR / "media")
+MEDIA_ROOT = os.path.join(ROOT_DIR, "media/")
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = "/media/"
 AUTH_USER_MODEL = "users.User"
@@ -97,7 +107,7 @@ AUTH_USER_MODEL = "users.User"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(APPS_DIR, "templates")],
+        "DIRS": [os.path.join(ROOT_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -110,3 +120,7 @@ TEMPLATES = [
     },
 ]
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "app-home"
+LOGOUT_URL = "logout"
+LOGOUT_REDIRECT_URL = "login"

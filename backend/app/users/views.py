@@ -21,11 +21,11 @@ def register(request):
             # messages.success(request, f"Votre compte a bien été crée!")
             return redirect("profile")
         else:
-            return render(request, "user/register.html", {"form": form})
+            return render(request, "users/register.html", {"form": form})
     else:
         form = SignUpForm()
 
-    return render(request, "user/register.html", {"form": form})
+    return render(request, "users/register.html", {"form": form})
 
 
 @login_required
@@ -42,4 +42,4 @@ def profile(request):
     else:
         user_form = UserUpdateForm(instance=request.user)
     context = {"user_form": user_form}
-    return render(request, "user/profile.html", context)
+    return render(request, "users/profile.html", context)
